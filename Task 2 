@@ -12,23 +12,20 @@ def fibonacci_series(n):
         return [0, 1]
 
     else:
-        sequence = [0, 1]  # Initialize with the first two Fibonacci numbers
-        a, b = 0, 1  # Initialize variables for Fibonacci calculation
-        
+        sequence = [0, 1]  
+        a, b = 0, 1 
         for i in range(2, n):
-            c = a + b  # Calculate the next Fibonacci number
-            a, b = b, c  # Update variables for the next iteration
-            sequence.append(c)  # Add it to the sequence
-        
+            c = a + b 
+            a, b = b, c  
+            sequence.append(c) 
         return sequence
 
 def main():
-    n = int(input("Enter the number of terms in the Fibonacci sequence: "))
+    n = int(input("Enter the number of terms in the Fibonacci series: "))
 
-    # Generate and display the Fibonacci sequence
-    fib_sequence = fibonacci_series(n)
-    print("Fibonacci sequence up to", n, "terms:")
-    print(fib_sequence)
+    fib_series = fibonacci_series(n)
+    print("Fibonacci series up to", n, "terms:")
+    print(fib_series)
 
 if __name__ == "__main__":
     main()
