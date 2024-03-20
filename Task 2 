@@ -1,0 +1,34 @@
+# Fibonacci series
+
+
+def fibonacci_series(n):
+    if n <= 0:
+        return "Number of terms should be a positive integer."
+
+    elif n == 1:
+        return [0]
+
+    elif n == 2:
+        return [0, 1]
+
+    else:
+        sequence = [0, 1]  # Initialize with the first two Fibonacci numbers
+        a, b = 0, 1  # Initialize variables for Fibonacci calculation
+        
+        for i in range(2, n):
+            c = a + b  # Calculate the next Fibonacci number
+            a, b = b, c  # Update variables for the next iteration
+            sequence.append(c)  # Add it to the sequence
+        
+        return sequence
+
+def main():
+    n = int(input("Enter the number of terms in the Fibonacci sequence: "))
+
+    # Generate and display the Fibonacci sequence
+    fib_sequence = fibonacci_series(n)
+    print("Fibonacci sequence up to", n, "terms:")
+    print(fib_sequence)
+
+if __name__ == "__main__":
+    main()
