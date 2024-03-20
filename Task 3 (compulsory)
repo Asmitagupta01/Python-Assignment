@@ -1,0 +1,50 @@
+import mysql.connector
+ 
+# Enter username and password
+uname = input("Enter username")
+pass = input("Enter password")
+
+# Connect to MySQL
+mydb = mysql.connector.connect(
+    host="localhost",
+    user="uname",
+    password="pass",
+    database="school"
+)
+
+# Create a cursor object
+mycursor = mydb.cursor()
+
+# Create table if not exists
+mycursor.execute("CREATE TABLE IF NOT EXISTS students (student_id INT AUTO_INCREMENT PRIMARY KEY, first_name VARCHAR(255), last_name VARCHAR(255), age INT, grade FLOAT)")
+
+# Insert a new student record
+sql = "INSERT INTO students (first_name, last_name, age, grade) VALUES (%s, %s, %s, %s)"
+val = ("Alice", "Smith", 18, 95.5)
+mycursor.execute(sql, val)
+mydb.commit()
+print("Student record inserted.")
+
+# Update the grade of the student with the first name "Alice"
+sql = "UPDATE students SET grade = %s WHERE first_name = %s"
+val = (97.0, "Alice")
+mycursor.execute(sql, val)
+mydb.commit()
+print("Grade updated for Alice.")
+
+# Delete the student with the last name "Smith"
+sql = "DELETE FROM students WHERE last_name = %s"
+val = ("Smith",)
+mycursor.execute(sql, val)
+mydb.commit()
+print("Student with last name Smith deleted.")
+
+# Fetch and display all student records
+mycursor.execute("SELECT * FROM students")
+records = mycursor.fetchall()
+print("All student records:")
+for record in records:
+    print(record)
+
+# Close the connection
+mydb.close()
