@@ -2,13 +2,13 @@ import mysql.connector
  
 # Enter username and password
 uname = input("Enter username")
-pass = input("Enter password")
+Pass = input("Enter password")
 
 # Connect to MySQL
 mydb = mysql.connector.connect(
     host="localhost",
     user="uname",
-    password="pass",
+    passwd="Pass",
     database="school"
 )
 
